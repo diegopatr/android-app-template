@@ -20,13 +20,44 @@ Este repositório serve como um template para projetos Android. Ele utiliza a SD
 
 4. **Configurar o projeto:**
 
-    * **`settings.gradle.kts`:**  Verifique se o nome do projeto e o nome do módulo estão corretos e correspondem à sua estrutura de projeto.
-    * **`build.gradle.kts` (Módulo app):**
-        * Modifique o `applicationId` para o ID único do seu aplicativo (ex: `com.example.meuapp`).
-        * Verifique as dependências e adicione ou remova conforme necessário para o seu projeto.
-    * **`AndroidManifest.xml`:**
-        * Atualize o nome do pacote para corresponder ao seu `applicationId`.
-        * Configure permissões necessárias para o seu aplicativo.
+   1. **Nome do Projeto e Pacote:**
+      - Altere o nome do projeto no arquivo `settings.gradle.kts`.
+      - Atualize o _namespace_ e o `applicationId` no arquivo `app/build.gradle.kts` para o pacote desejado. Essa mudança é crucial para a identidade do seu aplicativo.
+
+   2. **Módulos:**
+      - Verifique os módulos incluídos no projeto. Geralmente, você terá o módulo principal do aplicativo (":app"). Se necessário, adicione ou remova módulos.
+
+   3. **Configuração de Build (`app/build.gradle.kts`):**
+      - **`compileSdk`:** Define a versão do SDK de compilação. Use a versão mais recente estável, a menos que tenha requisitos específicos.
+      - **`minSdk`:** Indica a versão mínima do Android suportada pelo seu aplicativo. Considere seu público-alvo ao definir este valor.
+      - **`targetSdk`:** A versão do Android para a qual o aplicativo foi projetado. Recomenda-se usar a versão mais recente para aproveitar os recursos mais novos.
+      - **`versionCode` e `versionName`:** Gerencie a versão do seu aplicativo para controle de lançamentos e atualizações.
+
+   4. **Activity Principal (`app/src/main/java/<pacote>/MainActivity.kt`):**
+      - **Pacote:** Certifique-se de que a declaração do pacote corresponda ao seu pacote definido no `build.gradle.kts`.
+      - **Tema:** Personalize o tema do seu aplicativo. Você pode renomear a função do tema e modificar as cores, estilos de texto (tipografia) e formas nos arquivos de tema.
+      - **Conteúdo:** Modifique o conteúdo da sua `Activity` principal. A função `setContent` é onde você define a interface do usuário usando Compose.
+
+   5. **Testes (`app/src/test/java/<pacote>/` e `app/src/androidTest/java/<pacote>/`):**
+      - **Pacote:** As declarações de pacote nos arquivos de teste devem coincidir com o pacote do seu aplicativo.
+      - **Atualize os testes:** Adapte os testes de exemplo para refletir as mudanças na sua aplicação.
+
+   6. **Tema da Interface do Usuário (`app/src/main/java/<pacote>/ui/theme/`):**
+      - Personalize os arquivos de tema (cores, tipografia, formas) na pasta `ui/theme`.
+
+   7. **Recursos (`app/src/main/res/`):**
+      - **`strings.xml`:** Altere o nome do aplicativo e outras strings.
+      - **`themes.xml`:** Personalize os temas visuais do seu app.
+      - Adicione outros recursos, como imagens ou layouts, conforme necessário.
+
+   8. **Controle de Versão:**
+      - Certifique-se de que seu projeto esteja configurado com um sistema de controle de versão como o Git.
+
+   9. **Android Manifest (`app/src/main/AndroidManifest.xml`):**
+      - **Tema do aplicativo:** Defina o tema principal do aplicativo no elemento `<application>`.
+      - **Tema da activity:** Configure o tema de cada activity individualmente, se necessário.
+      - **Permissões:** Declare as permissões necessárias para o seu aplicativo.
+      - **Componentes:** Registre outros componentes do aplicativo, como services, broadcast receivers, etc.
 
 5. **Executar o aplicativo:**
 
